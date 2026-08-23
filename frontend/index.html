@@ -341,18 +341,8 @@ function showResult(){
     document.getElementById('genBtn').classList.remove('hidden');
   })
   .catch(err => {
-    // 백엔드 미배포/미연결 시 데모 데이터로 폴백 (실제 배포 후에는 이 catch 안쪽 폴백을 지워도 됨)
-    console.warn('백엔드 연결 실패, 데모 데이터로 대체:', err.message);
-    const key = gender === '남성' ? 'profile2' : 'profile1';
-    currentProfile = JSON.parse(JSON.stringify(PROFILES[key]));
-    currentProfile.userInput = { name, date: date || currentProfile.input.date, time: timeUnknown ? '모름' : (time || currentProfile.input.time), city: city || currentProfile.input.place, gender, timeUnknown, preQuestion };
-    render(currentProfile);
-    document.getElementById('inputScreen').classList.add('hidden');
-    document.getElementById('resultScreen').classList.remove('hidden');
-    document.getElementById('reportBox').classList.add('hidden');
-    document.getElementById('reportBox').innerHTML = '';
-    document.getElementById('genBtn').classList.remove('hidden');
-    document.getElementById('demoNotice').classList.remove('hidden');
+    console.error('API 호출 실패:', err);
+    alert('사주 계산 서버와 연결할 수 없습니다. 잠시 후 다시 시도해주세요.');
   })
   .finally(() => { btn.disabled = false; btn.textContent = '명식 · 명반 조회하기'; });
 }
