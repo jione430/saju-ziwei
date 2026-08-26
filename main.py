@@ -53,6 +53,7 @@ from lunar_python import Solar
 from py_iztro import Astro
 
 from cities import (
+    _astro_instance = Astro() ,
     CITY_LONGITUDE,
     TRUE_SOLAR_REFERENCE_LONGITUDE,
 )
@@ -458,10 +459,7 @@ async def calculate_chart(
             corrected_dt.minute
         )
 
-        astro = Astro()
-
-
-        r = astro.by_solar(
+        r = _astro_instance.by_solar(
             (
                 f"{corrected_dt.year}-"
                 f"{corrected_dt.month:02d}-"
