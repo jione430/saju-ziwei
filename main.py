@@ -53,11 +53,11 @@ from lunar_python import Solar
 from py_iztro import Astro
 
 from cities import (
-    _astro_instance = Astro() ,
     CITY_LONGITUDE,
     TRUE_SOLAR_REFERENCE_LONGITUDE,
 )
 
+_astro_instance = Astro() 
 
 # =========================================================
 # FASTAPI
